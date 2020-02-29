@@ -77,7 +77,7 @@
 		<appender name="atl"
 			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-			<file>${atl.location}/log.log</file>
+			<file>${atl.location}</file>
 
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -103,7 +103,7 @@
 		<appender name="bal"
 			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-			<file>${bal.location}/log.log</file>
+			<file>${bal.location}</file>
 
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -128,7 +128,6 @@
 
 		<root level="INFO">
 			<appender-ref ref="STDOUT" />
-			<appender-ref ref="SAVE-TO-FILE" />
 		</root>
 
 		<logger name="atl" additivity="false" level="INFO">
