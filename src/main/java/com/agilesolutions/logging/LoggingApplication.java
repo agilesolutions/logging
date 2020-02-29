@@ -16,6 +16,8 @@ public class LoggingApplication {
 
 		String value = "something";
 		
+		System.getProperty("java.class.path");
+		
 		bal.trace("doStuff needed more information - {}", value);
 		bal.debug("doStuff needed to debug - {}", value);
 		bal.info("doStuff took input - {}", value);
