@@ -40,6 +40,17 @@
 
 	<springProfile name="prod">
 
+		<springProperty scope="context" name="bal.achive"
+			source="spring.logging.bal.archive" />
+		<springProperty scope="context" name="bal.location"
+			source="spring.logging.bal.location" />
+
+
+		<springProperty scope="context" name="atl.achive"
+			source="spring.logging.atl.archive" />
+		<springProperty scope="context" name="atl.location"
+			source="spring.logging.atl.location" />
+
 		<appender name="STDOUT"
 			class="ch.qos.logback.core.ConsoleAppender">
 			<encoder>
@@ -51,11 +62,10 @@
 			</encoder>
 		</appender>
 
-
-		<appender name="SAVE-TO-FILE"
+		<appender name="atl"
 			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-			<file>${LOG_PATH}/log.log</file>
+			<file>${atl.location}/log.log</file>
 
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -68,7 +78,33 @@
 			<rollingPolicy
 				class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
 				<fileNamePattern>
-					${LOG_PATH}/archived/log_%d{dd-MM-yyyy}_%i.log
+					${atl.archive}/log_%d{dd-MM-yyyy}_%i.log
+				</fileNamePattern>
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>10</maxHistory>
+				<totalSizeCap>100MB</totalSizeCap>
+			</rollingPolicy>
+
+		</appender>
+
+
+		<appender name="bal"
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+			<file>${bal.location}/log.log</file>
+
+			<encoder
+				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>
+					%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level
+					%logger{36}.%M - %msg%n
+				</Pattern>
+			</encoder>
+
+			<rollingPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>
+					${bal.archive}/log_%d{dd-MM-yyyy}_%i.log
 				</fileNamePattern>
 				<maxFileSize>10MB</maxFileSize>
 				<maxHistory>10</maxHistory>
@@ -83,12 +119,16 @@
 			<appender-ref ref="SAVE-TO-FILE" />
 		</root>
 
-
-		<logger name="atl"
-			additivity="false" level="error">
-			<appender-ref ref="SAVE-TO-FILE" />
+		<logger name="atl" additivity="false" level="error">
+			<appender-ref ref="atl" />
 		</logger>
-		
+
+
+		<logger name="bal" additivity="false" level="error">
+			<appender-ref ref="bal" />
+		</logger>
+
+
 	</springProfile>
 
 
