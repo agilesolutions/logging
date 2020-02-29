@@ -28,6 +28,7 @@ target/
 build/
 bin/
 target/
+logs/
 
 ### VS Code ###
 .vscode/
