@@ -32,6 +32,7 @@ logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlig
 ## docu
 * [Spring boot profile specific logging	](https://howtodoinjava.com/spring-boot2/logging/profile-specific-logging/)
 * [Configuring Logback with Spring Boot](https://lankydan.dev/2019/01/09/configuring-logback-with-spring-boot)
+* [about containerized apps](https://medium.com/javarevisited/kubernetes-step-by-step-with-spring-boot-docker-gke-35e9481f6d5f)
 * [dzone](https://dzone.com/articles/configuring-logback-with-spring-boot)
 * [conditional processing](https://springframework.guru/using-logback-spring-boot/)
 * [springproperties](https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#environment-properties)
