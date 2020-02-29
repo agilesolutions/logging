@@ -9,26 +9,30 @@ According to the Kubenetes [documentation](https://kubernetes.io/docs/concepts/c
 mvn spring-boot:run -Dspring.profiles.active=dev
 ```
 ## dev
+not that impressive, everything goes to stderr and out for kubernetes
 
 ```
-logging.level.root=debug
-logging.level.atl
-logging.path=logs
-logging.file=${logging.path}/log.log
-logging.pattern.file=%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
+spring.application.name="test logging app"
+
 ```
 
 ## prod
+Production is running on VM's and so you have to specify each and every logger. If you don't, it will apply the defaults for these loggers.
 
 ```
-logging.level.root=info
-logging.level.atl
-logging.path=logs
-logging.file=${logging.path}/log.log
-logging.pattern.file=%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n
-logging.pattern.console=%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n
-```
+spring.application.name="test logging app"
+
+spring.logging.bal.archive=logs
+spring.logging.bal.file=bal.log
+spring.logging.bal.maxFileSize=10MB
+spring.logging.bal.maxHistory=10
+spring.logging.bal.totalSizeCap=100MB
+
+spring.logging.atl.archive=logs
+spring.logging.atl.file=atl.log
+spring.logging.atl.maxFileSize=10MB
+spring.logging.atl.maxHistory=10
+spring.logging.atl.totalSizeCap=100MB```
 ## docu
 * [Spring boot profile specific logging	](https://howtodoinjava.com/spring-boot2/logging/profile-specific-logging/)
 * [Configuring Logback with Spring Boot](https://lankydan.dev/2019/01/09/configuring-logback-with-spring-boot)
