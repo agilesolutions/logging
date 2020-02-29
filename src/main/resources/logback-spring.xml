@@ -36,6 +36,18 @@
 		<root level="INFO">
 			<appender-ref ref="jsonConsoleAppender" />
 		</root>
+
+		<logger name="atl" additivity="false" level="INFO">
+			<appender-ref ref="jsonConsoleAppender" />
+		</logger>
+
+
+		<logger name="bal" additivity="false" level="INFO">
+			<appender-ref ref="jsonConsoleAppender" />
+		</logger>
+
+
+
 	</springProfile>
 
 	<springProfile name="prod">
@@ -114,17 +126,17 @@
 		</appender>
 
 
-		<root level="info">
+		<root level="INFO">
 			<appender-ref ref="STDOUT" />
 			<appender-ref ref="SAVE-TO-FILE" />
 		</root>
 
-		<logger name="atl" additivity="false" level="error">
+		<logger name="atl" additivity="false" level="INFO">
 			<appender-ref ref="atl" />
 		</logger>
 
 
-		<logger name="bal" additivity="false" level="error">
+		<logger name="bal" additivity="false" level="INFO">
 			<appender-ref ref="bal" />
 		</logger>
 
