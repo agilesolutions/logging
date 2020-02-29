@@ -1,0 +1,30 @@
+29-02-2020 14:08:33.022 [restartedMain] INFO 
+					bal.main - doStuff took input - something
+29-02-2020 14:08:33.022 [restartedMain] WARN 
+					bal.main - doStuff needed to warn - something
+29-02-2020 14:08:33.022 [restartedMain] ERROR
+					bal.main - doStuff encountered an error with value - something
+29-02-2020 14:09:02.427 [restartedMain] INFO 
+					bal.main - doStuff took input - something
+29-02-2020 14:09:02.427 [restartedMain] WARN 
+					bal.main - doStuff needed to warn - something
+29-02-2020 14:09:02.427 [restartedMain] ERROR
+					bal.main - doStuff encountered an error with value - something
+29-02-2020 14:09:28.651 [restartedMain] INFO 
+					bal.main - doStuff took input - something
+29-02-2020 14:09:28.667 [restartedMain] WARN 
+					bal.main - doStuff needed to warn - something
+29-02-2020 14:09:28.667 [restartedMain] ERROR
+					bal.main - doStuff encountered an error with value - something
+29-02-2020 14:10:25.349 [restartedMain] INFO 
+					bal.main - doStuff took input - something
+29-02-2020 14:10:25.349 [restartedMain] WARN 
+					bal.main - doStuff needed to warn - something
+29-02-2020 14:10:25.349 [restartedMain] ERROR
+					bal.main - doStuff encountered an error with value - something
+29-02-2020 14:11:09.081 [restartedMain] INFO 
+					bal.main - doStuff took input - something
+29-02-2020 14:11:09.081 [restartedMain] WARN 
+					bal.main - doStuff needed to warn - something
+29-02-2020 14:11:09.081 [restartedMain] ERROR
+					bal.main - doStuff encountered an error with value - something

@@ -1,15 +1,21 @@
 package com.agilesolutions.logging;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.agilesolutions.logging.logic.atl;
+import com.agilesolutions.logging.logic.bal;
 
 @SpringBootApplication
 public class LoggingApplication {
 
-	private static final Logger bal = LoggerFactory.getLogger("bal");
-	private static final Logger atl = LoggerFactory.getLogger("atl");
+	@bal
+	private static Logger bal;
+	
+
+	@atl
+	private static Logger atl;
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoggingApplication.class, args);
