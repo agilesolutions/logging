@@ -56,12 +56,25 @@
 			source="spring.logging.bal.archive" defaultValue="arhcive"/>
 		<springProperty scope="context" name="bal.file"
 			source="spring.logging.bal.file" defaultValue="logs/bal.log"/>
+		<springProperty scope="context" name="bal.maxFileSize"
+			source="spring.logging.bal.maxFileSize" defaultValue="10MB"/>
+		<springProperty scope="context" name="bal.maxHistory"
+			source="spring.logging.bal.maxHistory" defaultValue="10"/>
+		<springProperty scope="context" name="bal.totalSizeCap"
+			source="spring.logging.bal.totalSizeCap" defaultValue="100MB"/>
+			
 
 
 		<springProperty scope="context" name="atl.achive"
 			source="spring.logging.atl.archive" defaultValue="archive" />
 		<springProperty scope="context" name="atl.file"
 			source="spring.logging.atl.file" defaultValue="logs/atl.log"/>
+		<springProperty scope="context" name="atl.maxFileSize"
+			source="spring.logging.atl.maxFileSize" defaultValue="10MB"/>
+		<springProperty scope="context" name="atl.maxHistory"
+			source="spring.logging.atl.maxHistory" defaultValue="10"/>
+		<springProperty scope="context" name="atl.totalSizeCap"
+			source="spring.logging.atl.totalSizeCap" defaultValue="100MB"/>
 
 		<appender name="STDOUT"
 			class="ch.qos.logback.core.ConsoleAppender">
@@ -89,9 +102,9 @@
 				<fileNamePattern>
 					${atl.archive}/log_%d{dd-MM-yyyy}_%i.log
 				</fileNamePattern>
-				<maxFileSize>10MB</maxFileSize>
-				<maxHistory>10</maxHistory>
-				<totalSizeCap>100MB</totalSizeCap>
+				<maxFileSize>${atl.maxFileSize}</maxFileSize>
+				<maxHistory>${atl.maxHistory}</maxHistory>
+				<totalSizeCap>${atl.totalSizeCap}</totalSizeCap>
 			</rollingPolicy>
 
 		</appender>
@@ -115,9 +128,9 @@
 				<fileNamePattern>
 					${bal.archive}/log_%d{dd-MM-yyyy}_%i.log
 				</fileNamePattern>
-				<maxFileSize>10MB</maxFileSize>
-				<maxHistory>10</maxHistory>
-				<totalSizeCap>100MB</totalSizeCap>
+				<maxFileSize>${bal.maxFileSize}</maxFileSize>
+				<maxHistory>${bal.maxHistory}</maxHistory>
+				<totalSizeCap>${bal.totalSizeCap}</totalSizeCap>
 			</rollingPolicy>
 
 		</appender>
