@@ -67,9 +67,7 @@
 			class="ch.qos.logback.core.ConsoleAppender">
 			<encoder>
 				<pattern>
-					%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread])
-					%highlight(%-5level)
-					%logger{36}.%M - %msg%n
+					%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36}.%M - %msg%n
 				</pattern>
 			</encoder>
 		</appender>
@@ -82,8 +80,7 @@
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 				<Pattern>
-					%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level
-					%logger{36}.%M - %msg%n
+					%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36}.%M - %msg%n
 				</Pattern>
 			</encoder>
 
@@ -130,7 +127,7 @@
 			<appender-ref ref="STDOUT" />
 		</root>
 
-		<logger name="atl" additivity="false" level="INFO">
+		<logger name="atl" additivity="true" level="INFO">
 			<appender-ref ref="atl" />
 		</logger>
 
