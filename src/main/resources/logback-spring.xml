@@ -4,43 +4,92 @@
 	<springProperty scope="context" name="application_name"
 		source="spring.application.name" />
 
-	<appender name="jsonConsoleAppender"
-		class="ch.qos.logback.core.ConsoleAppender">
-		<encoder
-			class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-			<providers>
-				<timestamp>
-					<timeZone>UTC</timeZone>
-				</timestamp>
-				<logLevel />
-				<message />
-				<loggerName />
-				<context />
-				<provider
-					class="net.logstash.logback.composite.loggingevent.ArgumentsJsonProvider" />
-				<pattern />
-				<mdc />
-				<stackTrace>
-					<throwableConverter
-						class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
-						<maxDepthPerThrowable>30</maxDepthPerThrowable>
-						<maxLength>4096</maxLength>
-						<shortenedClassNameLength>20</shortenedClassNameLength>
-						<rootCauseFirst>true</rootCauseFirst>
-					</throwableConverter>
-				</stackTrace>
-			</providers>
-		</encoder>
-	</appender>
+	<springProfile name="local | dev">
+		<appender name="jsonConsoleAppender"
+			class="ch.qos.logback.core.ConsoleAppender">
+			<encoder
+				class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+				<providers>
+					<timestamp>
+						<timeZone>UTC</timeZone>
+					</timestamp>
+					<logLevel />
+					<message />
+					<loggerName />
+					<context />
+					<provider
+						class="net.logstash.logback.composite.loggingevent.ArgumentsJsonProvider" />
+					<pattern />
+					<mdc />
+					<stackTrace>
+						<throwableConverter
+							class="net.logstash.logback.stacktrace.ShortenedThrowableConverter">
+							<maxDepthPerThrowable>30</maxDepthPerThrowable>
+							<maxLength>4096</maxLength>
+							<shortenedClassNameLength>20</shortenedClassNameLength>
+							<rootCauseFirst>true</rootCauseFirst>
+						</throwableConverter>
+					</stackTrace>
+				</providers>
+			</encoder>
+		</appender>
+		<root level="INFO">
+			<appender-ref ref="jsonConsoleAppender" />
+		</root>
+	</springProfile>
+
+	<springProfile name="prod">
+
+		<appender name="STDOUT"
+			class="ch.qos.logback.core.ConsoleAppender">
+			<encoder>
+				<pattern>
+					%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread])
+					%highlight(%-5level)
+					%logger{36}.%M - %msg%n
+				</pattern>
+			</encoder>
+		</appender>
 
 
-	<root level="INFO">
-		<appender-ref ref="jsonConsoleAppender" />
-	</root>
+		<appender name="SAVE-TO-FILE"
+			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-	<logger name="org.flywaydb" level="DEBUG"
-		additivity="true">
-		<appender-ref ref="jsonConsoleAppender" />
-	</logger>
+			<file>${LOG_PATH}/log.log</file>
+
+			<encoder
+				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+				<Pattern>
+					%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level
+					%logger{36}.%M - %msg%n
+				</Pattern>
+			</encoder>
+
+			<rollingPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+				<fileNamePattern>
+					${LOG_PATH}/archived/log_%d{dd-MM-yyyy}_%i.log
+				</fileNamePattern>
+				<maxFileSize>10MB</maxFileSize>
+				<maxHistory>10</maxHistory>
+				<totalSizeCap>100MB</totalSizeCap>
+			</rollingPolicy>
+
+		</appender>
+
+
+		<root level="info">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="SAVE-TO-FILE" />
+		</root>
+
+
+		<logger name="atl"
+			additivity="false" level="error">
+			<appender-ref ref="SAVE-TO-FILE" />
+		</logger>
+		
+	</springProfile>
+
 
 </configuration>
