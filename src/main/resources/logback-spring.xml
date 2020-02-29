@@ -54,14 +54,14 @@
 
 		<springProperty scope="context" name="bal.achive"
 			source="spring.logging.bal.archive" defaultValue="arhcive"/>
-		<springProperty scope="context" name="bal.location"
-			source="spring.logging.bal.location" defaultValue="logs/bal.log"/>
+		<springProperty scope="context" name="bal.file"
+			source="spring.logging.bal.file" defaultValue="logs/bal.log"/>
 
 
 		<springProperty scope="context" name="atl.achive"
 			source="spring.logging.atl.archive" defaultValue="archive" />
-		<springProperty scope="context" name="atl.location"
-			source="spring.logging.atl.location" defaultValue="logs/atl.log"/>
+		<springProperty scope="context" name="atl.file"
+			source="spring.logging.atl.file" defaultValue="logs/atl.log"/>
 
 		<appender name="STDOUT"
 			class="ch.qos.logback.core.ConsoleAppender">
@@ -77,7 +77,7 @@
 		<appender name="atl"
 			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-			<file>${atl.location}</file>
+			<file>${atl.file}</file>
 
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -103,7 +103,7 @@
 		<appender name="bal"
 			class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-			<file>${bal.location}</file>
+			<file>${bal.file}</file>
 
 			<encoder
 				class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
