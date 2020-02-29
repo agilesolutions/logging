@@ -1,5 +1,9 @@
 # spring boot logging and profiling
 
+Switching between logging on VM's and Kubernetes.
+
+According to the Kubenetes [documentation](https://kubernetes.io/docs/concepts/cluster-administration/logging/), all output (that a containerized application writes to stdout and stderr) is redirected to a JSON file by default. You can access it by using kubectl logs.
+
 ## running
 ```
 mvn spring-boot:run -Dspring.profiles.active=dev
