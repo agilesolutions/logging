@@ -4,6 +4,14 @@ Switching between logging on VM's and Kubernetes. On VM you might want to log to
 
 According to the Kubenetes [documentation](https://kubernetes.io/docs/concepts/cluster-administration/logging/), all output (that a containerized application writes to stdout and stderr) is redirected to a JSON file by default. You can access it by using kubectl logs.
 
+
+## LDAP TEMPLATE
+
+*[Spring LDAP Overview](https://www.baeldung.com/spring-ldap)
+*[Guide to Spring Data LDAP](https://www.baeldung.com/spring-data-ldap)
+*[Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
+
+
 ## running
 ```
 mvn spring-boot:run -Dspring.profiles.active=dev
